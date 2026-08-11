@@ -36,6 +36,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           protocol: ftp
+          force-pasv: true
           exclude: |
             **/.git*
             **/.git*/**
