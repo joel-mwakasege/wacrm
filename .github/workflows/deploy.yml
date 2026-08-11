@@ -29,16 +29,15 @@ jobs:
         run: npm run build
 
       - name: Sync Files to Namecheap via FTP
-        uses: SamKirsch/ftp-sync-action@v1.0.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.FTP_HOST }}
+          server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          local_path: './'
-          remote_path: '/'
-          delete_remote_files: false
+          protocol: ftp
           exclude: |
-            .git*
-            node_modules/
-            .next/cache/
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.next/cache/**
